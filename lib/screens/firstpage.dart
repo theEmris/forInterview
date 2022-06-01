@@ -20,8 +20,6 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
   int son = Random().nextInt(5);
-
-
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -51,8 +49,9 @@ class _FirstPageState extends State<FirstPage> {
                             height: 250,
                             child:Image(image: NetworkImage("https://cataas.com/cat/$son"))
                           ),
-                          Text(DateFormat.jm().format(data[son].createdAt as DateTime),
-                      ),],
+                          Text(DateFormat.jm().format(data[son].createdAt as DateTime) ,
+                      ),
+                      ],
                       ),
                       onTap: () async {
                         await SaveToHive(fact: data[son].text).then((value) {
