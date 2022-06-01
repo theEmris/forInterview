@@ -20,6 +20,7 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
   int son = Random().nextInt(5);
+  bool is24HoursFormat = MediaQuery.of(context).alwaysUse24HourFormat;
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +50,8 @@ class _FirstPageState extends State<FirstPage> {
                             height: 250,
                             child:Image(image: NetworkImage("https://cataas.com/cat/$son"))
                           ),
-                          Text(DateFormat.jm().format(data[son].createdAt as DateTime) ,
+
+                          Text(is24HoursFormat ? DateFormat("kk:mm").format(data[son].createdAt as DateTime): DateFormat.jm().format(data[son].createdAt as DateTime) ,
                       ),
                       ],
                       ),
